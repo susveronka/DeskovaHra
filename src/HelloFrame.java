@@ -12,9 +12,18 @@ public class HelloFrame extends JFrame {
     private JPanel panel;
     private JButton uložitZměnyButton;
 
+private int aktualniIndex = 0;
+private SpravceHer data = new SpravceHer();
+
 
     public HelloFrame(){
         initComponents();
+        loadData();
+       btPrevious.addActionListener(e -> posunIndex(1));
+
+    }
+    private void loadData(){ //
+data.add(new Hra("hra", true, 1));
     }
 
     private void initComponents(){
@@ -33,6 +42,10 @@ public class HelloFrame extends JFrame {
 
     private void prepnutiZpet(){
 
+    }
+
+    private void prekresliData(){
+        Hra aktualniHra = hry.get(aktualniIndex);
     }
 
 }

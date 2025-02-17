@@ -35,7 +35,7 @@ private Hra parseHra(String[] radek) {
 public void zapisDoSouboru(String soubor, String oddelovac){
     try(PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(soubor)))){
         for(Hra hra: hry){
-            String radek = hra.getNazev() + oddelovac + hra.getOblibenost();
+            String radek = hra.getNazev() + oddelovac + hra.getOblibenost() ;
             writer.println(radek);
         }
     } catch (RuntimeException | IOException e) {

@@ -6,6 +6,7 @@ public class Main {
 
         SpravceHer hry = new SpravceHer();
         hry.nactiZeSouboru("src/deskovky.txt", "oddelovac");
+        hry.zapisDoSouboru("src/soubor", "oddelovac");
 
     }
 }
