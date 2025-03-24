@@ -10,12 +10,16 @@ public class HraTableModel extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 3;
+        return 4;
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
 Hra hraNaRadku = data.get(rowIndex);
-
-}
+        switch (columnIndex){            case 0: return rowIndex +1;
+        case 1 : return hraNaRadku.getNazev();
+        case 2: return hraNaRadku.getOblibenost();
+        case 3:
+        return null;
+    }
 }
