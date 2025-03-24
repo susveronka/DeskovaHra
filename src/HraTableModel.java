@@ -16,6 +16,6 @@ public class HraTableModel extends AbstractTableModel {
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
 Hra hraNaRadku = data.get(rowIndex);
-return
+
 }
 }
