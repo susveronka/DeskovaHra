@@ -1,4 +1,7 @@
 import javax.swing.*;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class HelloFrame extends JFrame {
     private JTextField textField1;
@@ -12,40 +15,62 @@ public class HelloFrame extends JFrame {
     private JPanel panel;
     private JButton uložitZměnyButton;
 
-private int aktualniIndex = 0;
-private SpravceHer data = new SpravceHer();
+
+    private SpravceHer data = new SpravceHer();
+    private int aktualniIndex = 0;
+
+    public int getAktualniIndex() {
+        return aktualniIndex;
+    }
+
+    public void setAktualniIndex(int aktualniIndex) {
+        this.aktualniIndex = aktualniIndex;
+    }
+
+
 
 
     public HelloFrame(){
         initComponents();
         loadData();
-       btPrevious.addActionListener(e -> posunIndex(1));
+
+        btPrevious.addActionListener(e -> posunIndex(1));
+        btNext.addActionListener(e -> posunIndex(-1));
 
     }
-    private void loadData(){ //
-data.add(new Hra("hra", true, 1));
+
+    private void posunIndex(int oKolik) {
+        int puvodni = aktualniIndex;
+        aktualniIndex += oKolik;
+        if (aktualniIndex >= 0 && aktualniIndex < data.size()) {
+            prekresliData();
+        } else {
+            aktualniIndex = puvodni;
+        }
     }
 
+    private void loadData() {
+        data.add(new Hra("Pokus",  true, 1));
+        data.add(new Hra("Druhá",  false, 2));
+    }
     private void initComponents(){
         setContentPane(panel);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(800,600);
-        btPrevious.addActionListener(e -> prepnuti());
-        btNext.addActionListener(e -> prepnutiZpet());
 
-
-    }
-
-    private void prepnuti(){
+prekresliData();
 
     }
 
-    private void prepnutiZpet(){
 
-    }
 
-    private void prekresliData(){
-        Hra aktualniHra = hry.get(aktualniIndex);
+    private void prekresliData() {
+       Hra aktualniHra = data.get(aktualniIndex);
+        textField1.setText(aktualniHra.getNazev());
+       jeHraKoupenaCheckBox.setSelected(aktualniHra.isJeHraKoupena());
+        if (aktualniHra.getOblibenost() == 1) bt1.setSelected(true);
+        else if (aktualniHra.getOblibenost() == 2) bt1.setSelected(true);
+        else if (aktualniHra.getOblibenost() == 3) bt1.setSelected(true);
     }
 
 }

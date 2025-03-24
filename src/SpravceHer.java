@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class SpravceHer {
+public class SpravceHer extends  ArrayList<Hra>{
 
     private List <Hra> hry = new ArrayList<>();
 
@@ -42,5 +42,6 @@ public void zapisDoSouboru(String soubor, String oddelovac){
         throw new RuntimeException(e);
     }
 }
+
 
 }
